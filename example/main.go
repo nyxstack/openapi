@@ -25,7 +25,7 @@ func buildCompleteAPI() *openapi.Document {
 	doc := openapi.NewDocument("Pet Store API", "1.0.0")
 
 	// Add metadata
-	doc.WithInfo("A sample Pet Store Server based on the OpenAPI 3.0 specification", "http://swagger.io/terms/").
+	doc.WithInfo("A sample Pet Store Server based on the OpenAPI 3.1.0 specification", "http://swagger.io/terms/").
 		WithContact("API Support", "http://www.swagger.io/support", "support@swagger.io").
 		WithLicense("Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0.html")
 

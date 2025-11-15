@@ -1,6 +1,6 @@
-// Package openapi provides Go types and utilities for building OpenAPI 3.0 specifications.
+// Package openapi provides Go types and utilities for building OpenAPI 3.1.0 specifications.
 //
-// This package implements the complete OpenAPI 3.0 specification as Go structs,
+// This package implements the complete OpenAPI 3.1.0 specification as Go structs,
 // allowing you to programmatically build OpenAPI documents and marshal them to JSON or YAML.
 //
 // Basic usage:
@@ -17,6 +17,6 @@
 //		// handle error
 //	}
 //
-// The package supports all OpenAPI 3.0 features including schemas, parameters,
+// The package supports all OpenAPI 3.1.0 features including schemas, parameters,
 // responses, security schemes, callbacks, links, and more.
 package openapi

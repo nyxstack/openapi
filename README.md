@@ -1,6 +1,18 @@
 # OpenAPI Package
 
-Go types and utilities for building OpenAPI 3.0 specifications programmatically.
+Go types and utilities for building OpenAPI 3.1.0 specifications programmatically.
+
+## Features
+
+### Supported OpenAPI 3.1.0 Features
+
+- ✅ **Complete Specification Support** - All OpenAPI 3.1.0 objects implemented
+- ✅ **JSON Schema Integration** - Full schema validation and documentation
+- ✅ **Multiple Content Types** - JSON, XML, form data, file uploads
+- ✅ **Authentication Schemes** - API keys, OAuth2, HTTP auth
+- ✅ **Response Linking** - Connect operations through links
+- ✅ **Webhooks & Callbacks** - Document async operations
+- ✅ **Examples & Descriptions** - Rich documentation with examples
 
 ## Installation
 
@@ -10,7 +22,7 @@ go get github.com/nyxstack/openapi
 
 ## Overview
 
-This package provides Go types that represent the complete OpenAPI 3.0 specification. You use these types to programmatically build OpenAPI documents, then marshal them to JSON or YAML format.
+This package provides Go types that represent the complete OpenAPI 3.1.0 specification. You use these types to programmatically build OpenAPI documents, then marshal them to JSON or YAML format.
 
 ## Usage
 

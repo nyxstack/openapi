@@ -133,7 +133,8 @@ schema := &openapi.Schema{
 - User wants GraphQL schema
 - Only need simple HTTP client
 - Building non-API applications
-- User expects automatic generation (this is manual construction)
+
+**Note**: If user wants automatic generation, this package is perfect as the foundation - use these types to build generation tools!
 
 ### Common Mistakes to Avoid
 - **Missing Required Fields**: Always set `Type` in schemas
