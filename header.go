@@ -2,6 +2,7 @@ package openapi
 
 // Header represents a header in OpenAPI
 type Header struct {
+	Ref             string               `json:"$ref,omitempty"`
 	Description     string               `json:"description,omitempty"`
 	Required        bool                 `json:"required,omitempty"`
 	Deprecated      bool                 `json:"deprecated,omitempty"`

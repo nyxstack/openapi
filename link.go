@@ -3,7 +3,7 @@ package openapi
 // Link represents a link in OpenAPI
 type Link struct {
 	OperationRef string                 `json:"operationRef,omitempty"`
-	OperationId  string                 `json:"operationId,omitempty"`
+	OperationID  string                 `json:"operationId,omitempty"`
 	Parameters   map[string]interface{} `json:"parameters,omitempty"`
 	RequestBody  interface{}            `json:"requestBody,omitempty"`
 	Description  string                 `json:"description,omitempty"`
@@ -23,9 +23,9 @@ func (l Link) WithOperationRef(ref string) Link {
 	return l
 }
 
-// WithOperationId sets the operation ID
-func (l Link) WithOperationId(operationId string) Link {
-	l.OperationId = operationId
+// WithOperationID sets the operation ID
+func (l Link) WithOperationID(operationID string) Link {
+	l.OperationID = operationID
 	return l
 }
 

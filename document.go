@@ -15,26 +15,29 @@ type SecurityRequirement map[string][]string
 
 // Document represents the root OpenAPI v3 document
 type Document struct {
-	OpenAPI      string                `json:"openapi"`
-	Info         Info                  `json:"info"`
-	Servers      []Server              `json:"servers,omitempty"`
-	Paths        map[string]PathItem   `json:"paths"`
-	Components   *Components           `json:"components,omitempty"`
-	Security     []SecurityRequirement `json:"security,omitempty"`
-	Tags         []Tag                 `json:"tags,omitempty"`
-	ExternalDocs *ExternalDocs         `json:"externalDocs,omitempty"`
+	OpenAPI           string                `json:"openapi"`
+	Info              Info                  `json:"info"`
+	JSONSchemaDialect string                `json:"jsonSchemaDialect,omitempty"`
+	Servers           []Server              `json:"servers,omitempty"`
+	Paths             map[string]PathItem   `json:"paths"`
+	Webhooks          map[string]PathItem   `json:"webhooks,omitempty"`
+	Components        *Components           `json:"components,omitempty"`
+	Security          []SecurityRequirement `json:"security,omitempty"`
+	Tags              []Tag                 `json:"tags,omitempty"`
+	ExternalDocs      *ExternalDocs         `json:"externalDocs,omitempty"`
 }
 
 // NewDocument creates a new OpenAPI document with basic info
 func NewDocument(title, version string) *Document {
 	return &Document{
-		OpenAPI: "3.0.3",
+		OpenAPI: "3.1.0",
 		Info: Info{
 			Title:   title,
 			Version: version,
 		},
-		Paths: make(map[string]PathItem),
-		Tags:  []Tag{},
+		Paths:    make(map[string]PathItem),
+		Webhooks: make(map[string]PathItem),
+		Tags:     []Tag{},
 	}
 }
 

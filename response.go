@@ -2,6 +2,7 @@ package openapi
 
 // Response represents a response in OpenAPI
 type Response struct {
+	Ref         string               `json:"$ref,omitempty"`
 	Description string               `json:"description"`
 	Headers     map[string]Header    `json:"headers,omitempty"`
 	Content     map[string]MediaType `json:"content,omitempty"`

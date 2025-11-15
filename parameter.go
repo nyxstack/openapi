@@ -2,6 +2,7 @@ package openapi
 
 // Parameter represents a parameter in OpenAPI
 type Parameter struct {
+	Ref             string               `json:"$ref,omitempty"`
 	Name            string               `json:"name"`
 	In              string               `json:"in"`
 	Description     string               `json:"description,omitempty"`

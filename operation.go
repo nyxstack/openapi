@@ -6,7 +6,7 @@ type Operation struct {
 	Summary      string                `json:"summary,omitempty"`
 	Description  string                `json:"description,omitempty"`
 	ExternalDocs *ExternalDocs         `json:"externalDocs,omitempty"`
-	OperationId  string                `json:"operationId,omitempty"`
+	OperationID  string                `json:"operationId,omitempty"`
 	Parameters   []Parameter           `json:"parameters,omitempty"`
 	RequestBody  *RequestBody          `json:"requestBody,omitempty"`
 	Responses    map[string]Response   `json:"responses"`
@@ -17,9 +17,9 @@ type Operation struct {
 }
 
 // NewOperation creates a new operation with basic settings
-func NewOperation(operationId, summary, description string) Operation {
+func NewOperation(operationID, summary, description string) Operation {
 	return Operation{
-		OperationId: operationId,
+		OperationID: operationID,
 		Summary:     summary,
 		Description: description,
 		Responses:   make(map[string]Response),

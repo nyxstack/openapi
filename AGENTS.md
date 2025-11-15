@@ -2,9 +2,9 @@
 
 ## Quick Overview
 
-This package provides **OpenAPI 3.0 specification generation** for Go applications, specifically designed for the Nyx Framework. It allows automatic generation of interactive API documentation from Go structs and route definitions.
+This package provides **Go types and utilities for building OpenAPI 3.1 specifications** programmatically. It's a document builder library - you use these types to manually construct OpenAPI documents, then marshal them to JSON/YAML.
 
-**Key Purpose**: Transform Go code into OpenAPI specs → Generate interactive docs at `/docs` endpoint
+**Key Purpose**: Provide Go types representing OpenAPI 3.1 spec → Build documents manually → Marshal to JSON/YAML
 
 ## Core Usage Pattern
 

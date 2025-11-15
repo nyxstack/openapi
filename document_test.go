@@ -8,8 +8,8 @@ import (
 func TestNewDocument(t *testing.T) {
 	doc := NewDocument("Test API", "1.0.0")
 
-	if doc.OpenAPI != "3.0.3" {
-		t.Errorf("Expected OpenAPI version '3.0.3', got '%s'", doc.OpenAPI)
+	if doc.OpenAPI != "3.1.0" {
+		t.Errorf("Expected OpenAPI version '3.1.0', got '%s'", doc.OpenAPI)
 	}
 
 	if doc.Info.Title != "Test API" {

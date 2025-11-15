@@ -2,6 +2,7 @@ package openapi
 
 // RequestBody represents a request body in OpenAPI
 type RequestBody struct {
+	Ref         string               `json:"$ref,omitempty"`
 	Description string               `json:"description,omitempty"`
 	Content     map[string]MediaType `json:"content"`
 	Required    bool                 `json:"required,omitempty"`

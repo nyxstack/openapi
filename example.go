@@ -2,10 +2,11 @@ package openapi
 
 // Example represents an example in OpenAPI
 type Example struct {
-	Summary       string      `json:"summary,omitempty"`
-	Description   string      `json:"description,omitempty"`
-	Value         interface{} `json:"value,omitempty"`
-	ExternalValue string      `json:"externalValue,omitempty"`
+	Summary       string                 `json:"summary,omitempty"`
+	Description   string                 `json:"description,omitempty"`
+	Value         interface{}            `json:"value,omitempty"`
+	ExternalValue string                 `json:"externalValue,omitempty"`
+	Extensions    map[string]interface{} `json:"-"`
 }
 
 // NewExample creates a new example
