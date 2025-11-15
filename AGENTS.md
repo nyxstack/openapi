@@ -120,29 +120,20 @@ schema := &openapi.Schema{
 }
 ```
 
-## Framework Integration Notes
-
-- **Automatic Generation**: Nyx Framework auto-generates OpenAPI docs from controller structure
-- **Endpoints**: 
-  - `/openapi.json` - JSON specification
-  - `/openapi.yaml` - YAML specification  
-  - `/docs` - Interactive ScalarUI documentation
-- **Controller Mapping**: URL paths derived from embedded controller hierarchy
-- **Type Safety**: Schemas generated from Go struct tags
-
 ## AI Assistant Guidelines
 
 ### When to Suggest This Package
 ✅ **Use when**:
-- User wants OpenAPI/Swagger documentation
-- Building REST APIs in Go
-- Need interactive API documentation
-- Want type-safe spec generation
+- User wants to build OpenAPI/Swagger specifications programmatically
+- Building REST API documentation in Go
+- Need to generate OpenAPI JSON/YAML from Go code
+- Want type-safe OpenAPI document construction
 
 ❌ **Don't suggest when**:
 - User wants GraphQL schema
 - Only need simple HTTP client
 - Building non-API applications
+- User expects automatic generation (this is manual construction)
 
 ### Common Mistakes to Avoid
 - **Missing Required Fields**: Always set `Type` in schemas
@@ -159,9 +150,9 @@ schema := &openapi.Schema{
 
 ### Debugging Help
 - **JSON Output**: Use `doc.ToJSONString()` to inspect generated spec
-- **Validation**: Recommend online validators like swagger.io
-- **Missing Fields**: Check for required fields in OpenAPI 3.0 spec
+- **Validation**: Recommend online validators like swagger.io or redocly
 - **Type Issues**: Ensure Go types map correctly to OpenAPI types
+- **Compilation**: If it compiles and marshals, the spec structure is correct
 
 ## Schema Type Mapping
 
@@ -181,45 +172,49 @@ schema := &openapi.Schema{
 ## Quick Troubleshooting
 
 **"Invalid OpenAPI spec"**
-→ Check required fields: Document needs `openapi`, `info`, `paths`
+→ Use online validators like swagger.io to check the generated JSON
 
 **"Schema not found"**  
 → Verify reference format: `#/components/schemas/SchemaName`
 
-**"Parameter validation error"**
+**"Type errors"**
 → Ensure parameter has `name`, `in`, and `schema` fields
 
-**"Missing response"**
+**"Empty responses"**
 → Every operation needs at least one response (usually "200")
 
-## Integration Examples
+## Usage Examples
 
-### Nyx Framework Controller
+### Basic Document Building
 ```go
-type UserController struct {
-    APIController // Embedded for /api/users path
-}
+package main
 
-// Automatically documented as:
-// GET /api/users/{id}
-func (c *UserController) GetUser(ctx *nyx.Context) {
-    // Implementation
+import (
+    "fmt"
+    "github.com/nyxstack/openapi"
+)
+
+func main() {
+    doc := openapi.NewDocument("My API", "1.0.0")
+    doc.WithInfo("Sample API", "").WithContact("Team", "https://example.com", "team@example.com")
+    
+    operation := openapi.NewOperation("getUser", "Get User", "Get user by ID")
+    operation.WithPathParameter("id", "User ID", openapi.StringSchema(""))
+    operation.WithOkResponse("User found", userSchema())
+    
+    doc.AddOperation("/users/{id}", "GET", operation)
+    
+    jsonBytes, _ := doc.ToJSON()
+    fmt.Println(string(jsonBytes))
 }
 ```
 
-### Manual OpenAPI Generation
+### Complete API Documentation
 ```go
-// Build complete spec
-doc := buildOpenAPISpec()
-json, _ := doc.ToJSONString()
-
-// Serve documentation
-http.HandleFunc("/openapi.json", func(w http.ResponseWriter, r *http.Request) {
-    w.Header().Set("Content-Type", "application/json")
-    w.Write([]byte(json))
-})
+// See example/ directory for a comprehensive Pet Store API example
+// that demonstrates all major OpenAPI 3.1 features
 ```
 
 ---
 
-**Remember**: This package generates OpenAPI 3.0 specifications. Always validate output and test with real API documentation tools.
+**Remember**: This package provides Go types for building OpenAPI 3.1 specifications manually. The types themselves ensure structural correctness - if it compiles and marshals, the document structure is valid.
